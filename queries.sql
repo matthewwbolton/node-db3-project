@@ -27,3 +27,18 @@
     FROM [Order] as o
     JOIN Customer as c ON o.CustomerId = c.Id
     JOIN Employee as e ON o.EmployeeId = e.Id;
+
+
+-- STRETCH QUERIES --
+
+--Displays CategoryName and a new column called Count that shows how many products are in each category. Shows 8 records.
+
+    SELECT CategoryName, count(*) as Count FROM Categories as c 
+    JOIN Products as p ON c.categoryid = p.categoryid
+    Group By CategoryName
+
+--Display OrderID and a column called ItemCount that shows the total number of products placed on the order. Shows 196 records.
+
+    SELECT o.OrderId, count(*) as Item_Count FROM Orders as o
+    JOIN OrderDetails as od ON o.orderid = od.orderid
+    Group By o.OrderId;
